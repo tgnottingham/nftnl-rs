@@ -57,7 +57,7 @@ unsafe impl crate::NlMsg for Table {
             buf as *mut c_char,
             raw_msg_type as u16,
             self.family as u16,
-            libc::NLM_F_ACK as u16,
+            libc::NLM_F_REPLACE as u16 | libc::NLM_F_ACK as u16,
             seq,
         );
         sys::nftnl_table_nlmsg_build_payload(header, self.table);
